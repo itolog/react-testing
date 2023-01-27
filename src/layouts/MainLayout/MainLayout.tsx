@@ -1,18 +1,17 @@
-import React, { ReactNode } from "react";
+import React from "react";
+import { Outlet } from "react-router-dom";
 // STYLES
 import styles from "./mainLayout.module.scss";
 // COMPONENTS
 import Header from "@components/Header/Header";
 
-interface Props {
-  children: ReactNode;
-}
-
-const MainLayout: React.FC<Props> = ({ children }) => {
+const MainLayout = () => {
   return (
     <div className={styles.MainLayout}>
       <Header />
-      <main className={styles.MainContent}>{children}</main>
+      <main className={styles.MainContent}>
+        <Outlet />
+      </main>
     </div>
   );
 };

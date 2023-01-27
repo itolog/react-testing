@@ -11,6 +11,11 @@ const navLinks: NavLinks[] = [
     path: "/login",
     name: "Log In",
   },
+  {
+    id: 3,
+    path: "/error",
+    name: "404",
+  },
 ];
 
 export default navLinks;
