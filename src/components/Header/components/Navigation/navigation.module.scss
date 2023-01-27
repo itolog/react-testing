@@ -1,0 +1,21 @@
+.NavigationContainer {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.Navigation {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+}
+
+.NavigationItem {
+  color: #282c34;
+  text-decoration: none;
+}
+
+.NavigationItemActive {
+  color: #61dafb;
+  text-decoration: underline;
+}
