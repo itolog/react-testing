@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
     "target": "es5",
     "lib": [
       "dom",
@@ -18,27 +19,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "paths": {
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@pages/*": [
-        "src/pages/*"
-      ],
-      "@layouts/*": [
-        "src/layouts/*"
-      ],
-      "@shared/*": [
-        "src/shared/*"
-      ],
-      "@hooks/*": [
-        "src/shared/hooks/*"
-      ],
-      "@store/*": [
-        "src/store/*"
-      ]
-    }
+    "jsx": "react-jsx"
   },
   "include": [
     "src"

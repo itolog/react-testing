@@ -1,4 +1,4 @@
-import { NavLinks } from "@components/Header/components/Navigation/types";
+import { NavLinks } from "../types";
 
 const navLinks: NavLinks[] = [
   {
