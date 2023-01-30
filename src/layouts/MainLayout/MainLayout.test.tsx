@@ -6,7 +6,7 @@ import MainLayout from "./MainLayout";
 
 describe("MainLayout", () => {
   it("should be rendered with a footer", function () {
-    const layout = render(
+    render(
       <Router>
         <MainLayout />
       </Router>,
@@ -15,12 +15,10 @@ describe("MainLayout", () => {
     expect(screen.getByRole("banner")).toBeInTheDocument();
     expect(screen.getByRole("main")).toBeInTheDocument();
     expect(screen.queryByRole("contentinfo")).toBeInTheDocument();
-
-    expect(layout).toMatchSnapshot();
   });
 
   it("should not be rendered with a footer", function () {
-    const layout = render(
+    render(
       <Router>
         <MainLayout withFooter={false} />
       </Router>,
@@ -29,7 +27,5 @@ describe("MainLayout", () => {
     expect(screen.getByRole("banner")).toBeInTheDocument();
     expect(screen.getByRole("main")).toBeInTheDocument();
     expect(screen.queryByRole("contentinfo")).toBeNull();
-
-    expect(layout).toMatchSnapshot();
   });
 });

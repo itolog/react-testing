@@ -1,15 +1,19 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-// DATA
-import navLinks from "./data/navLinks";
+// TYPES
+import { NavLinks } from "./types";
 // STYLES
 import styles from "./navigation.module.scss";
 
-const Navigation = () => {
+interface NavigationProps {
+  items?: NavLinks[];
+}
+
+const Navigation: React.FC<NavigationProps> = ({ items = [] }) => {
   return (
     <nav className={styles.NavigationContainer}>
       <ul className={styles.Navigation}>
-        {navLinks.map((item) => {
+        {items.map((item) => {
           return (
             <li key={item.id}>
               <NavLink
