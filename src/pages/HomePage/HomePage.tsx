@@ -1,15 +1,18 @@
 import React from "react";
+// STYLES
+import styles from "./homePage.module.scss";
 
 const HomePage = () => {
+  const handleFetchData = () => {
+    console.log("FETCH");
+  };
+
   return (
-    <div>
-      HomePage
-      <button
-        onClick={() => {
-          throw new Error("error");
-        }}>
-        error
-      </button>
+    <div className={styles.HomePage}>
+      <h1>HomePage</h1>
+      <aside>
+        <button onClick={handleFetchData}>fetch data</button>
+      </aside>
     </div>
   );
 };
