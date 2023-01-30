@@ -50,9 +50,9 @@ Object {
           class="MainContent"
         />
         <footer
-          class="MainLayoutFooter"
+          class="Footer"
         >
-          App footer
+          App Footer
         </footer>
       </div>
     </div>
@@ -103,9 +103,9 @@ Object {
         class="MainContent"
       />
       <footer
-        class="MainLayoutFooter"
+        class="Footer"
       >
-        App footer
+        App Footer
       </footer>
     </div>
   </div>,
