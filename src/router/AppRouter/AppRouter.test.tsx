@@ -13,11 +13,11 @@ describe("AppRouter", () => {
 
     await user.click(
       screen.getByRole("link", {
-        name: /about/i,
+        name: /photo/i,
       }),
     );
 
-    expect(screen.queryByText(/AboutPage/i)).toBeInTheDocument();
+    expect(screen.queryByText(/PhotoPage/i)).toBeInTheDocument();
 
     await user.click(
       screen.getByRole("link", {

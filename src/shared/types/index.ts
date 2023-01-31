@@ -27,3 +27,17 @@ export interface Users {
   website: string;
   company: Company;
 }
+
+export interface Photo {
+  albumId: number;
+  id: number;
+  title: string;
+  url: string;
+  thumbnailUrl: string;
+}
+
+export enum AppRouterPath {
+  HOME = "/",
+  PHOTOS = "/photo",
+  LOGIN = "/login",
+}

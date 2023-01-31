@@ -21,7 +21,7 @@ describe("Navigation", () => {
 
     expect(
       getByRole("link", {
-        name: /about/i,
+        name: /photo/i,
       }),
     ).toBeInTheDocument();
 
