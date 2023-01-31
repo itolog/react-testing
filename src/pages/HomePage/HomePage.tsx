@@ -1,15 +1,26 @@
 import React from "react";
+// TYPES
+import { People } from "../../shared/types";
+// HOOKS
+import useLazyFetch from "../../shared/hooks/fetch/useLazyFetch";
 // STYLES
 import styles from "./homePage.module.scss";
+// COMPONENTS
+import PeopleList from "../../components/PeopleList/PeopleList";
 
 const HomePage = () => {
-  const handleFetchData = () => {
-    console.log("FETCH");
+  const [fetchPeople, { error, loading, data }] = useLazyFetch<People[]>();
+
+  const handleFetchData = async () => {
+    await fetchPeople("/users");
   };
 
   return (
     <div className={styles.HomePage}>
-      <h1>HomePage</h1>
+      <div>
+        <h1>HomePage</h1>
+        <PeopleList loading={loading} error={error} items={data} />
+      </div>
       <aside>
         <button onClick={handleFetchData}>fetch data</button>
       </aside>
