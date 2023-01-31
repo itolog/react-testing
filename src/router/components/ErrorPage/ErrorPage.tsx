@@ -6,7 +6,7 @@ import styles from "./errorPage.module.scss";
 const ErrorPage = () => {
   const error = useRouteError();
 
-  if (!isRouteErrorResponse(error) || error.status !== 401) {
+  if (!isRouteErrorResponse(error)) {
     throw error;
   }
 

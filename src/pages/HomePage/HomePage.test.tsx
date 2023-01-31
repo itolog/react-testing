@@ -84,6 +84,9 @@ describe("HomePage", () => {
     await act(() => {
       return promise;
     });
+
+    expect(mockedAxios.get).toBeCalledTimes(1);
+
     const items = await findAllByRole("listitem");
     expect(items).toHaveLength(2);
   });
@@ -95,6 +98,8 @@ describe("HomePage", () => {
 
     const { findByText, getByRole } = render(<HomePage />);
     await userEvent.click(getByRole("button"));
+
+    expect(mockedAxios.get).toBeCalledTimes(1);
 
     const message = await findByText(/Something went wrong/i);
     expect(message).toBeInTheDocument();
