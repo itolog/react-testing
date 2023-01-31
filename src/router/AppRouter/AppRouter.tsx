@@ -8,14 +8,14 @@ import {
 // TYPES
 import { AppRouterPath } from "../../shared/types";
 // LOADERS
-import { photosLoader } from "../loaders/userLoaders";
+import { photosLoader } from "../pageDataLoaders/userLoaders";
 // PAGES
 import HomePage from "../../pages/HomePage/HomePage";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import MainLayout from "../../layouts/MainLayout/MainLayout";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import PageNotFound from "../../pages/PageNotFound/PageNotFound";
-import PhotosPage from "../../pages/PhotosPage/PhotosPage";
+import PhotoPage from "../../pages/PhotoPage/PhotoPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,7 +25,7 @@ const router = createBrowserRouter(
         errorElement={<ErrorPage />}
         path={AppRouterPath.PHOTOS}
         loader={photosLoader}
-        element={<PhotosPage />}
+        element={<PhotoPage />}
       />
       <Route errorElement={<ErrorPage />} path={AppRouterPath.LOGIN} element={<LoginPage />} />
       <Route path="*" element={<PageNotFound />} />

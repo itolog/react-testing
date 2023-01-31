@@ -1,23 +1,22 @@
 import React, { Suspense } from "react";
 import { Await, useLoaderData } from "react-router-dom";
+// TYPES
 import { Photo } from "../../shared/types";
+// STYLES
+import styles from "./photoPage.module.scss";
+// COMPONENTS
+import PhotoList from "../../components/PhotoList/PhotoList";
 
-const PhotosPage = () => {
+const PhotoPage = () => {
   const data = useLoaderData() as { photos: Photo[] };
 
   return (
-    <div>
-      <h1> PhotoPage</h1>
+    <div className={styles.PhotoPage}>
+      <h1 className={styles.Title}>PhotoPage</h1>
       <Suspense fallback={"Loading ..."}>
         <Await resolve={data.photos}>
           {(photos) => {
-            return (
-              <ul>
-                {photos.map((photo: Photo) => {
-                  return <li key={photo.id}>{photo.title}</li>;
-                })}
-              </ul>
-            );
+            return <PhotoList photos={photos} />;
           }}
         </Await>
       </Suspense>
@@ -25,4 +24,4 @@ const PhotosPage = () => {
   );
 };
 
-export default PhotosPage;
+export default PhotoPage;
