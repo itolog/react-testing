@@ -1,29 +1,45 @@
 import React from "react";
-import { render, screen, within } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
+import { render, within } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 
 import Navigation from "./Navigation";
 import navLinks from "./data/navLinks";
 
 describe("Navigation", () => {
   it("should be rendered with links", function () {
-    render(
-      <BrowserRouter>
+    const { getByRole } = render(
+      <MemoryRouter>
         <Navigation items={navLinks} />
-      </BrowserRouter>,
+      </MemoryRouter>,
     );
 
-    expect(screen.getByRole("list")).toBeInTheDocument();
+    expect(
+      getByRole("link", {
+        name: /home/i,
+      }),
+    ).toBeInTheDocument();
+
+    expect(
+      getByRole("link", {
+        name: /about/i,
+      }),
+    ).toBeInTheDocument();
+
+    expect(
+      getByRole("link", {
+        name: /log in/i,
+      }),
+    ).toBeInTheDocument();
   });
 
   it("should be rendered without links", function () {
-    render(
-      <BrowserRouter>
+    const { queryByRole } = render(
+      <MemoryRouter>
         <Navigation />
-      </BrowserRouter>,
+      </MemoryRouter>,
     );
 
-    const list = screen.queryByRole("list");
+    const list = queryByRole("list");
 
     const { queryAllByRole } = within(list);
     const items = queryAllByRole("listitem");

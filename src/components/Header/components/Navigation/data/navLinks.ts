@@ -8,13 +8,13 @@ const navLinks: NavLinks[] = [
   },
   {
     id: 2,
-    path: "/login",
-    name: "Log In",
+    path: "/about",
+    name: "About",
   },
   {
     id: 3,
-    path: "/error",
-    name: "404",
+    path: "/login",
+    name: "Log In",
   },
 ];
 

@@ -17,6 +17,7 @@ const Navigation: React.FC<NavigationProps> = ({ items = [] }) => {
           return (
             <li key={item.id}>
               <NavLink
+                data-testid={item.name}
                 to={item.path}
                 className={({ isActive }) => {
                   return isActive ? styles.NavigationItemActive : styles.NavigationItem;
