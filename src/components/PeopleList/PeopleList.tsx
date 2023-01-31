@@ -15,13 +15,11 @@ const PeopleList: React.FC<PeopleListProps> = ({ error, items, loading }) => {
   if (error) return <span>Something went wrong ...</span>;
 
   return (
-    <div className={styles.PeopleList}>
-      <ul>
-        {items?.map((item) => {
-          return <li key={item.name}>{item.name}</li>;
-        })}
-      </ul>
-    </div>
+    <ul className={styles.PeopleList}>
+      {items?.map((item) => {
+        return <li key={item.name}>{item.name}</li>;
+      })}
+    </ul>
   );
 };
 
