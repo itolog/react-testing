@@ -1,6 +1,6 @@
 import React from "react";
 // TYPES
-import { People } from "../../shared/types";
+import { Users } from "../../shared/types";
 // HOOKS
 import useLazyFetch from "../../shared/hooks/fetch/useLazyFetch";
 // STYLES
@@ -9,7 +9,7 @@ import styles from "./homePage.module.scss";
 import PeopleList from "../../components/PeopleList/PeopleList";
 
 const HomePage = () => {
-  const [fetchPeople, { error, loading, data }] = useLazyFetch<People[]>();
+  const [fetchPeople, { error, loading, data }] = useLazyFetch<Users[]>();
 
   const handleFetchData = async () => {
     await fetchPeople("/users");

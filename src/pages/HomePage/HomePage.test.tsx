@@ -1,15 +1,17 @@
 import React from "react";
 import axios from "axios";
 import { render, screen, within } from "@testing-library/react";
-
+import userEvent from "@testing-library/user-event";
+import { act } from "react-dom/test-utils";
+// TYPES
+import { Users } from "../../shared/types";
+// COMPONENTS
 import HomePage from "./HomePage";
-import { People } from "../../shared/types";
-import { userEvent } from "@testing-library/user-event/setup/index";
 
 jest.mock("axios");
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-const mockData: People[] = [
+const mockData: Users[] = [
   {
     id: 1,
     name: "Leanne Graham",
@@ -71,13 +73,30 @@ describe("HomePage", () => {
     expect(button).toBeInTheDocument();
   });
 
-  it("fetches peoples from an API", async function () {
-    mockedAxios.get.mockResolvedValueOnce(() => {
-      return Promise.resolve({ data: { results: mockData } });
+  it("fetches users from an API", async function () {
+    const promise = Promise.resolve({ data: mockData });
+    mockedAxios.get.mockImplementationOnce(() => {
+      return promise;
     });
+
     const { getByRole, findAllByRole } = render(<HomePage />);
-    userEvent.click(getByRole("button"));
+    await userEvent.click(getByRole("button"));
+    await act(() => {
+      return promise;
+    });
     const items = await findAllByRole("listitem");
     expect(items).toHaveLength(2);
+  });
+
+  it("fetches users from an API and reject", async function () {
+    mockedAxios.get.mockImplementationOnce(() => {
+      return Promise.reject(new Error());
+    });
+
+    const { findByText, getByRole } = render(<HomePage />);
+    await userEvent.click(getByRole("button"));
+
+    const message = await findByText(/Something went wrong/i);
+    expect(message).toBeInTheDocument();
   });
 });

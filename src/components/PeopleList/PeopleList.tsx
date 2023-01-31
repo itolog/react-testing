@@ -1,12 +1,12 @@
 import React from "react";
 // TYPES
-import { People } from "../../shared/types";
+import { Users } from "../../shared/types";
 // STYLES
 import styles from "./peopleList.module.scss";
 
 interface PeopleListProps {
   error: boolean;
-  items: People[] | undefined;
+  items: Users[] | undefined;
   loading: boolean;
 }
 
