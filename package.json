@@ -14,10 +14,12 @@
     "ts": "tsc --noEmit --incremental --preserveWatchOutput --pretty"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.2",
     "@tanem/react-nprogress": "^5.0.25",
     "axios": "^1.2.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.0",
     "react-scripts": "^5.0.1",
     "web-vitals": "^3.1.1"
