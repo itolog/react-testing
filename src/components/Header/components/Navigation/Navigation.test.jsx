@@ -1,17 +1,15 @@
 import React from "react";
-import { render, within } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
+import { within } from "@testing-library/react";
 
 import Navigation from "./Navigation";
 import navLinks from "./data/navLinks";
+import renderWithRouter from "../../../../shared/helpers/tests/renderWithRouter";
 
 describe("Navigation", () => {
   it("should be rendered with links", function () {
-    const { getByRole } = render(
-      <MemoryRouter>
-        <Navigation items={navLinks} />
-      </MemoryRouter>,
-    );
+    const { getByRole } = renderWithRouter({
+      component: <Navigation items={navLinks} />,
+    });
 
     expect(
       getByRole("link", {
@@ -33,11 +31,9 @@ describe("Navigation", () => {
   });
 
   it("should be rendered without links", function () {
-    const { queryByRole } = render(
-      <MemoryRouter>
-        <Navigation />
-      </MemoryRouter>,
-    );
+    const { queryByRole } = renderWithRouter({
+      component: <Navigation />,
+    });
 
     const list = queryByRole("list");
 

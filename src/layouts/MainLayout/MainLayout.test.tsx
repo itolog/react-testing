@@ -1,31 +1,26 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
-import { MemoryRouter as Router } from "react-router-dom";
 
 import MainLayout from "./MainLayout";
+import renderWithRouter from "../../shared/helpers/tests/renderWithRouter";
 
 describe("MainLayout", () => {
   it("should be rendered with a footer", function () {
-    render(
-      <Router>
-        <MainLayout />
-      </Router>,
-    );
+    const { getByRole, queryByRole } = renderWithRouter({
+      component: <MainLayout />,
+    });
 
-    expect(screen.getByRole("banner")).toBeInTheDocument();
-    expect(screen.getByRole("main")).toBeInTheDocument();
-    expect(screen.queryByRole("contentinfo")).toBeInTheDocument();
+    expect(getByRole("banner")).toBeInTheDocument();
+    expect(getByRole("main")).toBeInTheDocument();
+    expect(queryByRole("contentinfo")).toBeInTheDocument();
   });
 
   it("should not be rendered with a footer", function () {
-    render(
-      <Router>
-        <MainLayout withFooter={false} />
-      </Router>,
-    );
+    const { getByRole, queryByRole } = renderWithRouter({
+      component: <MainLayout withFooter={false} />,
+    });
 
-    expect(screen.getByRole("banner")).toBeInTheDocument();
-    expect(screen.getByRole("main")).toBeInTheDocument();
-    expect(screen.queryByRole("contentinfo")).toBeNull();
+    expect(getByRole("banner")).toBeInTheDocument();
+    expect(getByRole("main")).toBeInTheDocument();
+    expect(queryByRole("contentinfo")).toBeNull();
   });
 });

@@ -1,17 +1,13 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
 
 import Header from "./Header";
+import renderWithRouter from "../../shared/helpers/tests/renderWithRouter";
 
 describe("App Header", () => {
   it("should be rendered", function () {
-    render(
-      <MemoryRouter>
-        <Header />
-      </MemoryRouter>,
-    );
-
-    expect(screen.getByRole("navigation")).toBeInTheDocument();
+    const { getByRole } = renderWithRouter({
+      component: <Header />,
+    });
+    expect(getByRole("navigation")).toBeInTheDocument();
   });
 });
