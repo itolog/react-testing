@@ -3,7 +3,7 @@ import { LoaderFunctionArgs } from "@remix-run/router/utils";
 import { defer } from "react-router-dom";
 
 const getPhoto = async ({ request }: LoaderFunctionArgs) => {
-  const { data } = await axios.get(`${process.env.REACT_APP_BASE_API_URL}/photos`, {
+  const { data } = await axios.get(`${process.env.REACT_APP_BASE_API_URL}/photos/?_limit=10`, {
     signal: request.signal,
   });
 
