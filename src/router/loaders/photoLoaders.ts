@@ -10,6 +10,6 @@ const getPhoto = async ({ request }: LoaderFunctionArgs) => {
   return data;
 };
 
-export const photosLoader = (args: LoaderFunctionArgs) => {
+export const photoLoader = (args: LoaderFunctionArgs) => {
   return defer({ photos: getPhoto(args) });
 };

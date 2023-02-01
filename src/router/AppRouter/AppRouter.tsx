@@ -8,7 +8,7 @@ import {
 // TYPES
 import { AppRouterPath } from "../../shared/types";
 // LOADERS
-import { photosLoader } from "../pageDataLoaders/userLoaders";
+import { photoLoader } from "../loaders/photoLoaders";
 // PAGES
 import HomePage from "../../pages/HomePage/HomePage";
 import LoginPage from "../../pages/LoginPage/LoginPage";
@@ -24,7 +24,7 @@ const router = createBrowserRouter(
       <Route
         errorElement={<ErrorPage />}
         path={AppRouterPath.PHOTOS}
-        loader={photosLoader}
+        loader={photoLoader}
         element={<PhotoPage />}
       />
       <Route errorElement={<ErrorPage />} path={AppRouterPath.LOGIN} element={<LoginPage />} />

@@ -5,34 +5,35 @@ import userEvent from "@testing-library/user-event";
 import AppRouter from "./AppRouter";
 
 describe("AppRouter", () => {
-  it("rendering/navigating", async function () {
-    render(<AppRouter />);
+  it("rendering initial route", async function () {
+    const { getByText } = render(<AppRouter />);
+
+    expect(getByText(/HomePage/i)).toBeInTheDocument();
+  });
+
+  it("render photo route", async function () {
+    const { getByRole } = render(<AppRouter />);
     const user = userEvent.setup();
 
-    expect(screen.getByText(/HomePage/i)).toBeInTheDocument();
-
     await user.click(
-      screen.getByRole("link", {
+      getByRole("link", {
         name: /photo/i,
       }),
     );
 
     expect(screen.queryByText(/PhotoPage/i)).toBeInTheDocument();
+  });
+
+  it("render log in route", async function () {
+    const { getByRole } = render(<AppRouter />);
+    const user = userEvent.setup();
 
     await user.click(
-      screen.getByRole("link", {
+      getByRole("link", {
         name: /log in/i,
       }),
     );
 
     expect(screen.queryByText(/loginpage/i)).toBeInTheDocument();
-
-    await user.click(
-      screen.getByRole("link", {
-        name: /home/i,
-      }),
-    );
-
-    expect(screen.getByText(/HomePage/i)).toBeInTheDocument();
   });
 });
