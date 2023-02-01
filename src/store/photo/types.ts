@@ -7,7 +7,7 @@ export interface ModalState {
   target: PhotoModals;
 }
 
-type Modals = {
+export type Modals = {
   [Modal in PhotoModals]: Omit<ModalState, "target">;
 };
 

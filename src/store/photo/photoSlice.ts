@@ -1,12 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ModalState, PhotoModals, PhotoState } from "./types";
+import { Modals, ModalState, PhotoModals, PhotoState } from "./types";
 
-const initialState: PhotoState = {
-  modals: {
-    [PhotoModals.VIEW_MODAL]: {
-      open: false,
-    },
+export const defaultModalsState: Modals = {
+  [PhotoModals.VIEW_MODAL]: {
+    open: false,
   },
+};
+
+export const initialState: PhotoState = {
+  modals: defaultModalsState,
 };
 
 export const photoSlice = createSlice({

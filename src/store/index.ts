@@ -1,9 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
+
 import photoReducer from "./photo/photoSlice";
 
 const store = configureStore({
-  reducer: photoReducer,
+  reducer: {
+    photo: photoReducer,
+  },
 });
 
 export type AppState = ReturnType<typeof store.getState>;
